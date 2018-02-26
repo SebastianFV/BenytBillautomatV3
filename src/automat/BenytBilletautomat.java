@@ -21,7 +21,7 @@ public class BenytBilletautomat
 			System.out.println("Tast 2 for at udskrive din billet");
 			System.out.println("Tast 3 for at få returpengene");
 			System.out.println();
-			System.out.println("Tast 10 for at logge ind som montør");
+			System.out.println("Tast 10 for at logge ind som montø");
 			if (automat.erMontør()) {
 				System.out.println("Tast 11 for at se status (montør)");
 				System.out.println("Tast 12 for at nulstille (montør)");
