@@ -24,6 +24,7 @@ public class BenytBilletautomat
             switch(valg)
             {
                 case 1:
+                    // Arraylist skal fungere bedre. Virker som om den overskriver gamle lists når den tilføjer nye.
                     ID++;
                     Kunde cos = new Kunde();
                     log.tilføjKunde(cos);
@@ -40,6 +41,7 @@ public class BenytBilletautomat
                                 System.out.print("Skriv beløb: ");
                                 int beløb = tastatur.nextInt();
                                 automat.indsætPenge(beløb);
+                                log.setBeløb(beløb);
                                 break;
                             case 2:
                                 log.setTime("Klokken 5");
@@ -93,7 +95,9 @@ public class BenytBilletautomat
                                 automat.setBilletpris(beløb);
                                 break;
                             case 14:
-                                System.out.println("The time of the purchase for ID " + log.getID() + " was: " + log.getTime());
+                                // Her skal jeg printe arraylist, gøres det rigtigt?
+                                log.printLog();
+//                              System.out.println("The time of the purchase for ID " + log.getID() + " was: " + log.getTime());
                                 break;
                             case 15:
                                 automat.montørLogin("");

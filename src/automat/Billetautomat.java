@@ -8,6 +8,7 @@ public class Billetautomat
 	private int balance; // Hvor mange penge kunden p.t. har puttet i automaten
 	private int antalBilletterSolgt; // Antal billetter automaten i alt har solgt
 	private boolean montørtilstand;
+        
 
 	/**
 	 * Opret en billetautomat der sælger billetter til 10 kr.

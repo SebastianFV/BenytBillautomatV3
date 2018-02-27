@@ -48,6 +48,32 @@ public class Transaktionslog
         }
         return 0;
     }
+    public  void setBeløb(int beløb)
+    {
+        kunder.forEach((cos) -> {
+            cos.setBeløb(beløb);
+        });
+    }
+    
+    public int getBeløb()
+    {
+        for(Kunde cos : kunder)
+        {
+            return cos.getBeløb();
+        }
+        return 0;
+    }
+    
+    public void printLog()
+    {
+        for (int i = 0; i < kunder.size(); i++) 
+        {
+            System.out.println("Costumor ID: " + kunder.get(i).getID());
+            System.out.println("Time of purchase: " + kunder.get(i).getTidspunkt());
+            System.out.println("Money put in machine: " + kunder.get(i).getBeløb());
+        }
+        
+    }
     
     
 }
