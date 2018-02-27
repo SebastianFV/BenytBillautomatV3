@@ -32,7 +32,21 @@ public class Transaktionslog
         {
             return cos.getTidspunkt();
         }
-        return null;
+        return "No costumers exist";
+    }
+    public  void setID(int ID)
+    {
+        kunder.forEach((cos) -> {
+            cos.setID(ID);
+        });
+    }
+    public int getID()
+    {
+        for(Kunde cos : kunder)
+        {
+            return cos.getID();
+        }
+        return 0;
     }
     
     

@@ -9,7 +9,7 @@ package automat;
 public class Kunde 
 {
     private String tidspunkt;
-    private String ID;
+    private int ID;
     private int beløb;
 
     public Kunde()
@@ -17,10 +17,10 @@ public class Kunde
         
     }
     
-    public Kunde(String tidspunkt, String handling, int beløb) 
+    public Kunde(String tidspunkt, int ID, int beløb) 
     {
         this.tidspunkt = tidspunkt;
-        this.ID = handling;
+        this.ID = ID;
         this.beløb = beløb;
     }
 
@@ -29,9 +29,9 @@ public class Kunde
         this.tidspunkt = tidspunkt;
     }
 
-    public void setHandling(String handling) 
+    public void setID(int ID) 
     {
-        this.ID = handling;
+        this.ID = ID;
     }
 
     public void setBeløb(int beløb) 
@@ -44,7 +44,7 @@ public class Kunde
         return tidspunkt;
     }
 
-    public String getHandling() 
+    public int getID() 
     {
         return ID;
     }

@@ -125,4 +125,15 @@ public class Billetautomat
 	public boolean erMontør() {
 		return montørtilstand;
 	}
+        
+        public void buyerMenu()
+        {
+            System.out.println("-----------------------------------------------");
+            System.out.println("En billet koster " + getBilletpris() + " kroner");
+            System.out.println("Balancen er på " + getBalance() + " kroner");
+            System.out.println();
+            System.out.println("Tast 1 for at indbetale penge");
+            System.out.println("Tast 2 for at udskrive din billet");
+            System.out.println("Tast 3 for at afslutte køb");
+        }
 }
