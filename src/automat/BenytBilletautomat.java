@@ -6,6 +6,7 @@ public class BenytBilletautomat
 {
 	public static void main(String[] arg)
 	{
+                Transaktionslog log = new Transaktionslog();
 		Billetautomat automat = new Billetautomat();
 		java.util.Scanner tastatur = new java.util.Scanner(System.in);  // forbered
 
@@ -26,7 +27,8 @@ public class BenytBilletautomat
 				System.out.println("Tast 11 for at se status (montør)");
 				System.out.println("Tast 12 for at nulstille (montør)");
 				System.out.println("Tast 13 for at sætte billetpris (montør)");
-				System.out.println("Tast 14 for at logge ud af montørtilstand");
+                                System.out.println("Tast 14 for at printe transaktionslog (montør)");
+				System.out.println("Tast 15 for at logge ud af montørtilstand");
 			}
 			int valg = tastatur.nextInt();
 			tastatur.nextLine();
@@ -36,8 +38,10 @@ public class BenytBilletautomat
 				int beløb = tastatur.nextInt();
 				automat.indsætPenge(beløb);
 			}
-			else if (valg==2) {
-				automat.udskrivBillet();
+			else if (valg==2) 
+                        {
+                            log.setTime("Klokken 5");
+                            automat.udskrivBillet();
 			}
 			else if (valg==3) {
 				int beløb = automat.returpenge();
@@ -60,7 +64,11 @@ public class BenytBilletautomat
 				int beløb = tastatur.nextInt();
 				automat.setBilletpris(beløb);
 			}
-			else if (valg==14) {
+                        else if (valg ==14)
+                        {
+                            System.out.println("The time of the purchase was:" + log.getTime());
+                        }
+			else if (valg==15) {
 				automat.montørLogin("");;
 			}
 			else {

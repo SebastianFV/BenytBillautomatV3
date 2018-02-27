@@ -8,11 +8,31 @@ import java.util.ArrayList;
 
 public class Transaktionslog 
 {
-    public ArrayList<Kunder> kunder;
+    public ArrayList<Kunde> kunder;
     
     public Transaktionslog()
     {
-        kunder = new ArrayList<Kunder>();
+        kunder = new ArrayList<Kunde>();
+    }
+    
+    public void tilføjKunde(Kunde cos)
+    {
+        kunder.add(cos);
+    }
+    
+    public  void setTime(String time)
+    {
+        kunder.forEach((cos) -> {
+            cos.setTidspunkt(time);
+        });
+    }
+    public String getTime()
+    {
+        for(Kunde cos : kunder)
+        {
+            return cos.getTidspunkt();
+        }
+        return null;
     }
     
     

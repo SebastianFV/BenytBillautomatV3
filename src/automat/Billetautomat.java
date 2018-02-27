@@ -2,7 +2,8 @@ package automat;
 /**
  * Model af en simpel billetautomat til enkeltbilletter med én fast pris.
  */
-public class Billetautomat {
+public class Billetautomat 
+{
 	private int billetpris;    // Prisen for én billet.
 	private int balance; // Hvor mange penge kunden p.t. har puttet i automaten
 	private int antalBilletterSolgt; // Antal billetter automaten i alt har solgt

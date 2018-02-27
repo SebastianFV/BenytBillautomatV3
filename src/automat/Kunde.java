@@ -6,21 +6,21 @@
 package automat;
 
 
-public class Kunder 
+public class Kunde 
 {
     private String tidspunkt;
-    private String handling;
+    private String ID;
     private int beløb;
 
-    public Kunder()
+    public Kunde()
     {
         
     }
     
-    public Kunder(String tidspunkt, String handling, int beløb) 
+    public Kunde(String tidspunkt, String handling, int beløb) 
     {
         this.tidspunkt = tidspunkt;
-        this.handling = handling;
+        this.ID = handling;
         this.beløb = beløb;
     }
 
@@ -31,7 +31,7 @@ public class Kunder
 
     public void setHandling(String handling) 
     {
-        this.handling = handling;
+        this.ID = handling;
     }
 
     public void setBeløb(int beløb) 
@@ -46,7 +46,7 @@ public class Kunder
 
     public String getHandling() 
     {
-        return handling;
+        return ID;
     }
 
     public int getBeløb() 
