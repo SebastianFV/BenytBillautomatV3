@@ -44,13 +44,14 @@ public class BenytBilletautomat
                                 log.setBeløb(beløb);
                                 break;
                             case 2:
-                                log.setTime("Klokken 5");
                                 if(automat.getBalance() >= 10)
                                 {
+                                    log.setTime("Klokken 5");
                                     automat.udskrivBillet();
                                     beløb = automat.returpenge();
                                     System.out.println("Du fik "+beløb+" retur retur");
                                 }
+                                else System.out.println("You did not put in enough money for a ticket");
                                 break;
                             case 3:
                                 System.out.println("Afslutter transaktion.");
