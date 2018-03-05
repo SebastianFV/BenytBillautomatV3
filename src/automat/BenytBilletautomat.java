@@ -43,24 +43,20 @@ public class BenytBilletautomat
                                 if(automat.getBalance() >= 10)
                                 {
                                     tidspunkt = "klokken 5";
-                                    automat.udskrivBillet();
                                     beløb = automat.returpenge();
                                     System.out.println("Du fik "+beløb+" retur");
                                 }
                                 else System.out.println("You did not put in enough money for a ticket");
                                 break;
-                            case 2: 
-                                købStatus = 0;
-                                break;
-                            case 3:
+                            case 2:
                                 System.out.println("Afslutter transaktion.");
                                 købStatus = 0;
                                 valg = 0;   // nulstiller valg, så den ikke går ind i en forkert case
                                 ID++;
                                 Kunde cos = new Kunde(tidspunkt, ID, beløb);
                                 log.tilføjKunde(cos);
-                                log.setID(ID);
-                                købStatus = 1;
+                                automat.udskrivBillet();
+                                købStatus = 0;
                                 break;
                             default:
                                 System.out.println("Ugyldigt valg, prøv igen");
