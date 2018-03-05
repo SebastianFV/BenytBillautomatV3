@@ -6,6 +6,8 @@ public class BenytBilletautomat
         String time = "Klokken er 5";
         int beløb = 0;
         int ID = 0;
+        int beløb = 0;
+        String tidspunkt = "5";
         int købStatus = 0;
         int montørStatus = 0;
         Transaktionslog log = new Transaktionslog();
@@ -26,10 +28,15 @@ public class BenytBilletautomat
             switch(valg)
             {
                 case 1:
+<<<<<<< HEAD
                     // Arraylist skal fungere bedre. Virker som om den overskriver gamle lists når den tilføjer nye.
                     ID++;
                     log.setID(ID);
+=======
+                    beløb = 0;
+>>>>>>> e5707674d2a7228a66c20a4710b2d4acd3b92f32
                     købStatus = 1;
+                    // Arraylist skal fungere bedre. Virker som om den overskriver gamle lists når den tilføjer nye.
                     while(købStatus == 1)
                     {
                         automat.buyerMenu();
@@ -39,6 +46,7 @@ public class BenytBilletautomat
                         {
                             case 1:
                                 System.out.print("Skriv beløb: ");
+<<<<<<< HEAD
                                 beløb = tastatur.nextInt();
                                 automat.indsætPenge(beløb);
                                 log.setBeløb(beløb, ID);
@@ -47,11 +55,21 @@ public class BenytBilletautomat
                                 if(automat.getBalance() >= 10)
                                 {
                                     log.setTime(time, ID);
+=======
+                                beløb = beløb + tastatur.nextInt();
+                                automat.indsætPenge(beløb);
+                                if(automat.getBalance() >= 10)
+                                {
+                                    tidspunkt = "klokken 5";
+>>>>>>> e5707674d2a7228a66c20a4710b2d4acd3b92f32
                                     automat.udskrivBillet();
                                     beløb = automat.returpenge();
-                                    System.out.println("Du fik "+beløb+" retur retur");
+                                    System.out.println("Du fik "+beløb+" retur");
                                 }
                                 else System.out.println("You did not put in enough money for a ticket");
+                                break;
+                            case 2: 
+                                købStatus = 0;
                                 break;
                             case 3:
                                 System.out.println("Afslutter transaktion.");
@@ -59,6 +77,11 @@ public class BenytBilletautomat
                                 log.tilføjKunde(cos);
                                 købStatus = 0;
                                 valg = 0;   // nulstiller valg, så den ikke går ind i en forkert case
+                                ID++;
+                                Kunde cos = new Kunde(tidspunkt, ID, beløb);
+                                log.tilføjKunde(cos);
+                                log.setID(ID);
+                                købStatus = 1;
                                 break;
                             default:
                                 System.out.println("Ugyldigt valg, prøv igen");
@@ -94,11 +117,15 @@ public class BenytBilletautomat
                                 break;
                             case 13:
                                 System.out.print("Skriv beløb: ");
+<<<<<<< HEAD
                                 beløb = tastatur.nextInt();
+=======
+                                beløb = beløb + tastatur.nextInt();
+>>>>>>> e5707674d2a7228a66c20a4710b2d4acd3b92f32
                                 automat.setBilletpris(beløb);
                                 break;
                             case 14:
-                                // Her skal jeg printe arraylist, gøres det rigtigt?
+                                // Her skal jeg printe array1list, gøres det rigtigt?
                                 log.printLog();
 //                              System.out.println("The time of the purchase for ID " + log.getID() + " was: " + log.getTime());
                                 break;
