@@ -169,6 +169,5 @@ public class Billetautomat
             System.out.println();
             System.out.println("Tast 1 for at indbetale penge");
             System.out.println("Tast 2 for at udskrive din billet");
-            System.out.println("Tast 3 for at afslutte køb");
         }
 }

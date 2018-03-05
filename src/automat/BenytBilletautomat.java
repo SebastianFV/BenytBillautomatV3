@@ -1,10 +1,11 @@
-package automat;
+package automat;;
 public class BenytBilletautomat
 {
     public static void main(String[] arg)
     {
-        int ID = 0;
+        String time = "Klokken er 5";
         int beløb = 0;
+        int ID = 0;
         String tidspunkt = "5";
         int købStatus = 0;
         int montørStatus = 0;
@@ -33,24 +34,16 @@ public class BenytBilletautomat
                     {
                         automat.buyerMenu();
                         valg = tastatur.nextInt();
-                        tastatur.nextLine();
+                        tastatur.nextLine(); // HVad er det her? 
                         switch (valg) 
                         {
                             case 1:
-                                System.out.print("Skriv beløb: ");
+                                System.out.println("Intast oplysninger:");
+                                System.out.println("Beløb:");
                                 beløb = beløb + tastatur.nextInt();
-                                automat.indsætPenge(beløb);
-                                if(automat.getBalance() >= 10)
-                                {
-                                    tidspunkt = "klokken 5";
-                                    beløb = automat.returpenge();
-                                    System.out.println("Du fik "+beløb+" retur");
-                                }
-                                else System.out.println("You did not put in enough money for a ticket");
                                 break;
                             case 2:
                                 System.out.println("Afslutter transaktion.");
-                                købStatus = 0;
                                 valg = 0;   // nulstiller valg, så den ikke går ind i en forkert case
                                 ID++;
                                 Kunde cos = new Kunde(tidspunkt, ID, beløb);
@@ -92,7 +85,11 @@ public class BenytBilletautomat
                                 break;
                             case 13:
                                 System.out.print("Skriv beløb: ");
+
+                                beløb = tastatur.nextInt();
+
                                 beløb = beløb + tastatur.nextInt();
+
                                 automat.setBilletpris(beløb);
                                 break;
                             case 14:
