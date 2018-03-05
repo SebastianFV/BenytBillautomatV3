@@ -1,15 +1,12 @@
-package automat;;
+package automat;
 public class BenytBilletautomat
 {
     public static void main(String[] arg)
     {
         String time = "Klokken er 5";
         int beløb = 0;
-<<<<<<< HEAD
         int ID = 0;
-=======
         int retur = 0;
->>>>>>> c703091f45e930c8ada9113309e2c00e9e7c2654
         String tidspunkt = "5";
         int købStatus = 0;
         int montørStatus = 0;
@@ -45,10 +42,7 @@ public class BenytBilletautomat
                                 System.out.println("Intast oplysninger:");
                                 System.out.println("Beløb:");
                                 beløb = beløb + tastatur.nextInt();
-<<<<<<< HEAD
-=======
                                 automat.indsætPenge(beløb);
->>>>>>> ddec7370e75a0feb5cb0a384a30afc34bf265d7d
                                 break;
                             case 2:
                                 automat.udskrivBillet();
@@ -106,9 +100,8 @@ public class BenytBilletautomat
                                 automat.setBilletpris(beløb);
                                 break;
                             case 14:
-                                // Her skal jeg printe array1list, gøres det rigtigt?
+                                System.out.println("---------------------------------------------------------------------------");
                                 log.printLog();
-//                              System.out.println("The time of the purchase for ID " + log.getID() + " was: " + log.getTime());
                                 break;
                             case 15:
                                 automat.montørLogin("");
