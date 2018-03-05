@@ -1,9 +1,12 @@
 package automat;
+import java.util.Date;
+
 public class BenytBilletautomat
 {
     public static void main(String[] arg)
     {
-        String time = "Klokken er 5";
+        Date dato = new Date();
+        String time = dato.toString();
         int beløb = 0;
         int ID = 0;
         int retur = 0;
@@ -39,22 +42,37 @@ public class BenytBilletautomat
                         switch (valg) 
                         {
                             case 1:
-                                System.out.println("Intast oplysninger:");
                                 System.out.println("Beløb:");
-                                beløb = beløb + tastatur.nextInt();
-                                automat.indsætPenge(beløb);
+                                int input = tastatur.nextInt();
+                                automat.indsætPenge(input);
+                                beløb = beløb + input;
                                 break;
                             case 2:
-                                automat.udskrivBillet();
+                                System.out.println("Vælg billettype:");
+                                System.out.println("1. Børnebillet 10kr");
+                                System.out.println("2. Voksenbillet 20kr");
+                                valg = tastatur.nextInt();
+                                tastatur.nextLine(); // HVad er det her?
+                                if(valg == 1)
+                                {
+                                    automat.udskrivBørneBillet();
+                                }
+                                else if(valg == 2)
+                                {
+                                    automat.udskrivVoksenBillet();
+                                }
+                                else
+                                {
+                                    System.err.println("Ikke en mulighed");
+                                }
                                 break;
                             case 3:
                                 tidspunkt = "klokken 5";
                                 retur = automat.returpenge();
-                                System.out.println("Du fik "+retur+" retur");
                                 System.out.println("Afslutter transaktion.");
                                 valg = 0;   // nulstiller valg, så den ikke går ind i en forkert case
                                 ID++;
-                                Kunde cos = new Kunde(tidspunkt, ID, beløb, retur);
+                                Kunde cos = new Kunde(tidspunkt, ID, beløb, retur, automat.getAntalBørneBilletterSolgt(), automat.getAntalVoksenBilletterSolgt());
                                 log.tilføjKunde(cos);
                                 købStatus = 0;
                                 break;
@@ -84,7 +102,7 @@ public class BenytBilletautomat
                             switch(valg)
                             {
                             case 11:
-                                System.out.println("Antal billetter solgt: " + automat.getAntalBilletterSolgt());
+                                System.out.println("Antal billetter solgt: " + automat.getTotalBilletSalg());
                                 System.out.println("Total indkomst: " + automat.getTotal()+" kr");
                                 break;
                             case 12:

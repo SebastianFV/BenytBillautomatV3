@@ -17,7 +17,7 @@ public class TjekBilletautomat
 
 		System.out.println("*** Tjek af salg af en billet");
 		automat.indsætPenge(10);
-		automat.udskrivBillet();
+		automat.udskrivBørneBillet();
 		retur = automat.returpenge();
 		if (retur != 0) 
                 {
@@ -27,7 +27,7 @@ public class TjekBilletautomat
 
 		System.out.println("*** Tjek af, at penge kan komme retur");
 		automat.indsætPenge(100);
-		automat.udskrivBillet();
+		automat.udskrivBørneBillet();
 		retur = automat.returpenge();
 		if (retur != 90) 
                 {
@@ -64,7 +64,7 @@ public class TjekBilletautomat
 		System.out.println("*** Tjek af andre billetpriser");
 		automat.setBilletpris(20);
 		automat.indsætPenge(100);
-		automat.udskrivBillet();
+		automat.udskrivBørneBillet();
 		retur = automat.returpenge();
 		if (retur != 80) 
                 {

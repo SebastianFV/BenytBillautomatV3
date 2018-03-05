@@ -12,13 +12,15 @@ public class Kunde
     private int ID;
     private int beløb;
     private int retur;
+    private int antalVoksenBilletter;
+    private int antalBørneBilletter;
 
-    public Kunde()
-    {
-        
-    }
+//    public Kunde()
+//    {
+//        
+//    }
     
-    public Kunde(String tidspunkt, int ID, int beløb, int retur) 
+    public Kunde(String tidspunkt, int ID, int beløb, int retur, int antalVoksenBilletter, int antalBørneBilletter) 
     {
         this.retur = retur;
         this.tidspunkt = tidspunkt;
@@ -59,6 +61,16 @@ public class Kunde
     public int getRetur()
     {
         return retur;
+    }
+    
+    public int getBBillet()
+    {
+        return antalBørneBilletter;
+    }
+    
+    public int getVBillet()
+    {
+        return antalVoksenBilletter;
     }
     
 

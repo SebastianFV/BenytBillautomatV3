@@ -7,17 +7,21 @@ import java.util.ArrayList;
  */
 public class Billetautomat 
 {
-	private int billetpris;    // Prisen for én billet.
+	private int børneBilletpris;    // Prisen for én billet.
+        private int voksenBilletpris;
 	private int balance; // Hvor mange penge kunden p.t. har puttet i automaten
 	private int antalBilletterSolgt; // Antal billetter automaten i alt har solgt
 	private boolean montørtilstand;
+        public int antalVBillet = 0;
+        public int antalBBillet = 0;
 
 	/**
 	 * Opret en billetautomat der sælger billetter til 10 kr.
 	 */
 	public Billetautomat() 
         {
-            billetpris = 10;
+            børneBilletpris = 10;
+            voksenBilletpris = 20;
             balance = 0;
             antalBilletterSolgt = 0;
 	}
@@ -27,7 +31,7 @@ public class Billetautomat
 	 */
 	public int getBilletpris() 
         {
-            int resultat = billetpris;
+            int resultat = børneBilletpris;
             return resultat;
 	}
 
@@ -51,7 +55,7 @@ public class Billetautomat
 	 * Udskriv en billet.
 	 * Opdater total og nedskriv balancen med billetprisen
 	 */
-	public void udskrivBillet() 
+	public void udskrivBørneBillet() 
         {
             if (balance<10) 
             {
@@ -62,16 +66,41 @@ public class Billetautomat
             System.out.println("##########B##T#########");
             System.out.println("# BlueJ Trafikselskab #");
             System.out.println("#                     #");
-            System.out.println("#        Billet       #");
-            System.out.println("#        " + billetpris + " kr.       #");
+            System.out.println("#   Børne Billet      #");
+            System.out.println("#       " + børneBilletpris + " kr.      #");
             System.out.println("#                     #");
             System.out.println("##########B##T#########");
-            System.out.println("# Du har " + (balance-billetpris) + " kr til gode       #");
+            System.out.println("# Du har " + (balance-børneBilletpris) + " kr til gode       #");
             System.out.println("##########B##T#########");
             System.out.println();
 
-            antalBilletterSolgt = antalBilletterSolgt + 1;
-            balance = balance - billetpris; // Billetter koster 10 kroner
+            antalBBillet++;
+            antalBilletterSolgt++;
+            balance = balance - børneBilletpris; // Børne billetter koster 10 kroner
+            }
+	}
+        public void udskrivVoksenBillet() 
+        {
+            if (balance<20) 
+            {
+                System.out.println("Du mangler at indbetale nogle penge");
+            }
+            else
+            {
+            System.out.println("##########B##T#########");
+            System.out.println("# BlueJ Trafikselskab #");
+            System.out.println("#                     #");
+            System.out.println("#   Voksen Billet      #");
+            System.out.println("#       " + voksenBilletpris + " kr.      #");
+            System.out.println("#                     #");
+            System.out.println("##########B##T#########");
+            System.out.println("# Du har " + (balance-voksenBilletpris) + " kr til gode       #");
+            System.out.println("##########B##T#########");
+            System.out.println();
+
+            antalVBillet++;
+            antalBilletterSolgt++;
+            balance = balance - voksenBilletpris; // Børne billetter koster 10 kroner
             }
 	}
 
@@ -105,7 +134,7 @@ public class Billetautomat
         {
             if (montørtilstand) 
             {
-                return billetpris * antalBilletterSolgt;
+                return børneBilletpris * antalBilletterSolgt + voksenBilletpris * antalBilletterSolgt;
             } 
             else 
             {
@@ -114,7 +143,7 @@ public class Billetautomat
             }
 	}
 
-	public int getAntalBilletterSolgt() 
+        public int getTotalBilletSalg() 
         {
             if (montørtilstand) 
             {
@@ -126,10 +155,36 @@ public class Billetautomat
                 return 0;
             }
 	}
+        
+	public int getAntalBørneBilletterSolgt() 
+        {
+            if (montørtilstand) 
+            {
+                return antalBBillet;
+            } 
+            else 
+            {
+                System.out.println("Afvist - log ind først");
+                return 0;
+            }
+	}
+        
+        public int getAntalVoksenBilletterSolgt() 
+        {
+            if (montørtilstand) 
+            {
+                return antalVBillet;
+            } 
+            else 
+            {
+                System.out.println("Afvist - log ind først");
+                return 0;
+            }
+	}
 
 	public void setBilletpris(int billetpris) 
         {
-            this.billetpris = billetpris;
+            this.børneBilletpris = billetpris;
 	}
 
 	public void nulstil() 
@@ -170,5 +225,12 @@ public class Billetautomat
             System.out.println("Tast 1 for at indbetale penge");
             System.out.println("Tast 2 for at udskrive din billet");
             System.out.println("Tast 3 for at afslutte køb");
+        }
+        
+        public void billetmenu()
+        {
+            System.out.println("Vælg billettype:");
+            System.out.println("1. Børnebillet 10kr");
+            System.out.println("2. Voksenbillet 20kr");
         }
 }
