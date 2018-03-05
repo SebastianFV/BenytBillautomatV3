@@ -6,13 +6,15 @@ public class BenytBilletautomat
     public static void main(String[] arg)
     {
         Date dato = new Date();
-        String time = dato.toString();
+        String tidspunkt = dato.toString();
         int beløb = 0;
         int ID = 0;
         int retur = 0;
-        String tidspunkt = "5";
         int købStatus = 0;
         int montørStatus = 0;
+        int antalVBillet = 0;
+        int antalBBillet = 0;
+        
         Transaktionslog log = new Transaktionslog();
         Billetautomat automat = new Billetautomat();
         java.util.Scanner tastatur = new java.util.Scanner(System.in);  // forbered
@@ -67,12 +69,11 @@ public class BenytBilletautomat
                                 }
                                 break;
                             case 3:
-                                tidspunkt = "klokken 5";
                                 retur = automat.returpenge();
                                 System.out.println("Afslutter transaktion.");
                                 valg = 0;   // nulstiller valg, så den ikke går ind i en forkert case
                                 ID++;
-                                Kunde cos = new Kunde(tidspunkt, ID, beløb, retur, automat.getAntalBørneBilletterSolgt(), automat.getAntalVoksenBilletterSolgt());
+                                Kunde cos = new Kunde(tidspunkt, ID, beløb, retur, automat.antalBBillet, automat.antalVBillet);
                                 log.tilføjKunde(cos);
                                 købStatus = 0;
                                 break;
@@ -96,7 +97,8 @@ public class BenytBilletautomat
                             System.out.println("Tast 12 for at nulstille (montør)");
                             System.out.println("Tast 13 for at sætte billetpris (montør)");
                             System.out.println("Tast 14 for at printe transaktionslog (montør)");
-                            System.out.println("Tast 15 for at logge ud af montørtilstand");
+                            System.out.println("Tast 15 for at søge efter information om en specifik kunde");
+                            System.out.println("Tast 16 for at logge ud af montørtilstand");
                             valg = tastatur.nextInt();
                             tastatur.nextLine();
                             switch(valg)
@@ -110,11 +112,8 @@ public class BenytBilletautomat
                                 break;
                             case 13:
                                 System.out.print("Skriv beløb: ");
-
                                 beløb = tastatur.nextInt();
-
                                 beløb = beløb + tastatur.nextInt();
-
                                 automat.setBilletpris(beløb);
                                 break;
                             case 14:
@@ -122,6 +121,13 @@ public class BenytBilletautomat
                                 log.printLog();
                                 break;
                             case 15:
+                                // Virker ikke optimalt. Den printer info for ID 3 når man vælger 2, og error når man vælger 1.
+                                System.out.println("Skriv ID på kunden du ønsker at søge på:");
+                                valg = tastatur.nextInt();
+                                tastatur.nextLine(); // HVad er det her?
+                                log.printLog(valg);
+                                break;
+                            case 16:
                                 automat.montørLogin("");
                                 montørStatus = 0;
                                 valg = 0; // nulstiller valg, så den ikke går ind i en forkert case

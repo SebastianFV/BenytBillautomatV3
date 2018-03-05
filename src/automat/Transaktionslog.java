@@ -88,4 +88,15 @@ public class Transaktionslog
         }
     }
     
+    public void printLog(int ID) // Overloader funktionen så vi kan søge på en specific kunde.
+    {
+        System.out.println("Kunde ID: " + kunder.get(ID).getID());      // Printer ID, på trods af at det er det man søger efter. Skal måske slettes
+        System.out.println("Tidspunkt for køb: " + kunder.get(ID).getTidspunkt());
+        System.out.println("Penge lagt i maskinen: " + kunder.get(ID).getBeløb());
+        System.out.println("Returpenge var: " + kunder.get(ID).getRetur());
+        System.out.println("Antal børnebilletter købt var: " + kunder.get(ID).getBBillet());
+        System.out.println("Antal voksenbilletter købt var: " + kunder.get(ID).getVBillet());
+        System.out.println("---------------------------------------------------------------------------");
+        System.out.println("");
+    }
 }

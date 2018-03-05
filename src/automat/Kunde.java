@@ -20,12 +20,14 @@ public class Kunde
 //        
 //    }
     
-    public Kunde(String tidspunkt, int ID, int beløb, int retur, int antalVoksenBilletter, int antalBørneBilletter) 
+    public Kunde(String tidspunkt, int ID, int beløb, int retur, int antalBørneBilletter, int antalVoksenBilletter) 
     {
         this.retur = retur;
         this.tidspunkt = tidspunkt;
         this.ID = ID;
         this.beløb = beløb;
+        this.antalBørneBilletter = antalBørneBilletter;
+        this.antalVoksenBilletter = antalVoksenBilletter;
     }
 
     public void setTidspunkt(String tidspunkt) 
