@@ -11,14 +11,16 @@ public class Kunde
     private String tidspunkt;
     private int ID;
     private int beløb;
+    private int retur;
 
     public Kunde()
     {
         
     }
     
-    public Kunde(String tidspunkt, int ID, int beløb) 
+    public Kunde(String tidspunkt, int ID, int beløb, int retur) 
     {
+        this.retur = retur;
         this.tidspunkt = tidspunkt;
         this.ID = ID;
         this.beløb = beløb;
@@ -52,6 +54,11 @@ public class Kunde
     public int getBeløb() 
     {
         return beløb;
+    }
+    
+    public int getRetur()
+    {
+        return retur;
     }
     
 

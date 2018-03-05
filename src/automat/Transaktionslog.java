@@ -64,13 +64,25 @@ public class Transaktionslog
         return 0;
     }
     
+    public int getRetur()
+    {
+        for(Kunde cos : kunder)
+        {
+            return cos.getRetur();
+        }
+        return 0;
+    }
+    
     public void printLog()
     {
         for (int i = 0; i < kunder.size(); i++) 
         {
-            System.out.println("Costumor ID: " + kunder.get(i).getID());
-            System.out.println("Time of purchase: " + kunder.get(i).getTidspunkt());
-            System.out.println("Money put in machine: " + kunder.get(i).getBeløb());
+            System.out.println("Kunde ID: " + kunder.get(i).getID());
+            System.out.println("Tidspunkt for køb: " + kunder.get(i).getTidspunkt());
+            System.out.println("Penge lagt i maskinen: " + kunder.get(i).getBeløb());
+            System.out.println("Returpenge var: " + kunder.get(i).getRetur());
+            System.out.println("---------------------------------------------------------------------------");
+            System.out.println("");
         }
     }
     

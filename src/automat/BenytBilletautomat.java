@@ -5,6 +5,7 @@ public class BenytBilletautomat
     {
         int ID = 0;
         int beløb = 0;
+        int retur = 0;
         String tidspunkt = "5";
         int købStatus = 0;
         int montørStatus = 0;
@@ -46,13 +47,13 @@ public class BenytBilletautomat
                                 break;
                             case 3:
                                 tidspunkt = "klokken 5";
-                                beløb = automat.returpenge();
-                                System.out.println("Du fik "+beløb+" retur");
+                                retur = automat.returpenge();
+                                System.out.println("Du fik "+retur+" retur");
                                 System.out.println("Afslutter transaktion.");
                                 købStatus = 0;
                                 valg = 0;   // nulstiller valg, så den ikke går ind i en forkert case
                                 ID++;
-                                Kunde cos = new Kunde(tidspunkt, ID, beløb);
+                                Kunde cos = new Kunde(tidspunkt, ID, beløb, retur);
                                 log.tilføjKunde(cos);
                                 købStatus = 0;
                                 break;
