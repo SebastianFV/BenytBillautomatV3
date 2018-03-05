@@ -8,13 +8,12 @@ package automat;
 
 public class Kunde 
 {
-    private String tidspunkt;
-    private int ID;
-    private int beløb;
+    public String tidspunkt;
+    public int ID;
+    public int beløb;
 
     public Kunde()
     {
-        
     }
     
     public Kunde(String tidspunkt, int ID, int beløb) 

@@ -20,10 +20,14 @@ public class Transaktionslog
         kunder.add(cos);
     }
     
-    public  void setTime(String time)
+    public  void setTime(String time, int kundeID)
     {
-        kunder.forEach((cos) -> {
-            cos.setTidspunkt(time);
+        kunder.forEach((cos) ->
+        {
+            if(cos.ID == kundeID)
+            {
+                cos.setTidspunkt(time);
+            }
         });
     }
     public String getTime()
@@ -32,7 +36,7 @@ public class Transaktionslog
         {
             return cos.getTidspunkt();
         }
-        return "No costumers exist";
+        return null;
     }
     public  void setID(int ID)
     {
@@ -40,18 +44,25 @@ public class Transaktionslog
             cos.setID(ID);
         });
     }
-    public int getID()
+    public Kunde getKundeByID(int ID)
     {
         for(Kunde cos : kunder)
         {
-            return cos.getID();
+            if(cos.ID == ID)
+            {
+                return cos;
+            }
         }
-        return 0;
+        return null;
     }
-    public  void setBeløb(int beløb)
+    public  void setBeløb(int beløb, int kundeID)
     {
-        kunder.forEach((cos) -> {
-            cos.setBeløb(beløb);
+        kunder.forEach((cos) ->
+        {
+            if(cos.ID == kundeID)
+            {
+                cos.setBeløb(beløb);
+            }
         });
     }
     

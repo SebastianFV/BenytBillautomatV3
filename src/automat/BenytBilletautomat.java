@@ -3,6 +3,8 @@ public class BenytBilletautomat
 {
     public static void main(String[] arg)
     {
+        String time = "Klokken er 5";
+        int beløb = 0;
         int ID = 0;
         int købStatus = 0;
         int montørStatus = 0;
@@ -26,8 +28,6 @@ public class BenytBilletautomat
                 case 1:
                     // Arraylist skal fungere bedre. Virker som om den overskriver gamle lists når den tilføjer nye.
                     ID++;
-                    Kunde cos = new Kunde();
-                    log.tilføjKunde(cos);
                     log.setID(ID);
                     købStatus = 1;
                     while(købStatus == 1)
@@ -39,14 +39,14 @@ public class BenytBilletautomat
                         {
                             case 1:
                                 System.out.print("Skriv beløb: ");
-                                int beløb = tastatur.nextInt();
+                                beløb = tastatur.nextInt();
                                 automat.indsætPenge(beløb);
-                                log.setBeløb(beløb);
+                                log.setBeløb(beløb, ID);
                                 break;
                             case 2:
                                 if(automat.getBalance() >= 10)
                                 {
-                                    log.setTime("Klokken 5");
+                                    log.setTime(time, ID);
                                     automat.udskrivBillet();
                                     beløb = automat.returpenge();
                                     System.out.println("Du fik "+beløb+" retur retur");
@@ -55,6 +55,8 @@ public class BenytBilletautomat
                                 break;
                             case 3:
                                 System.out.println("Afslutter transaktion.");
+                                Kunde cos = new Kunde(time, ID, beløb);
+                                log.tilføjKunde(cos);
                                 købStatus = 0;
                                 valg = 0;   // nulstiller valg, så den ikke går ind i en forkert case
                                 break;
@@ -92,7 +94,7 @@ public class BenytBilletautomat
                                 break;
                             case 13:
                                 System.out.print("Skriv beløb: ");
-                                int beløb = tastatur.nextInt();
+                                beløb = tastatur.nextInt();
                                 automat.setBilletpris(beløb);
                                 break;
                             case 14:
