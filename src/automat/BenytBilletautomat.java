@@ -14,6 +14,7 @@ public class BenytBilletautomat
         int montørStatus = 0;
         int antalVBillet = 0;
         int antalBBillet = 0;
+        int counter = 0;
         
         Transaktionslog log = new Transaktionslog();
         Billetautomat automat = new Billetautomat();
@@ -46,6 +47,10 @@ public class BenytBilletautomat
                             case 1:
                                 System.out.println("Beløb:");
                                 int input = tastatur.nextInt();
+                                while(input < 0)            //Betaling skal være positiv
+                                {
+                                    input = tastatur.nextInt();
+                                }
                                 automat.indsætPenge(input);
                                 beløb = beløb + input;
                                 break;
@@ -85,10 +90,25 @@ public class BenytBilletautomat
                     break;
                 case 2:
                     System.out.print("Skriv kode: ");
+                    counter = 0;
                     String kode = tastatur.next();
+                    int retries = 3;
+                    while (montørStatus != 1 && retries <= 0)
+                    {
+                        counter++;
+                        kode = tastatur.next();
+                        if (automat.erMontør())
+                        {
+                            montørStatus = 1;
+                        }
+                        else 
+                        {
+                            retries = 3 - counter;
+                            System.out.println("Wrong password");
+                            System.out.println("You have " + retries + " tries left");
+                        }
+                    }
                     automat.montørLogin(kode);
-                    if(automat.erMontør()) montørStatus = 1;
-                    else System.out.println("Wrong password. Please try again.");
                     while(montørStatus == 1)
                     {
                         if (automat.erMontør()) 
