@@ -72,7 +72,6 @@ public class Transaktionslog
             System.out.println("Time of purchase: " + kunder.get(i).getTidspunkt());
             System.out.println("Money put in machine: " + kunder.get(i).getBeløb());
         }
-        
     }
     
     

@@ -40,22 +40,20 @@ public class BenytBilletautomat
                                 System.out.print("Skriv beløb: ");
                                 beløb = beløb + tastatur.nextInt();
                                 automat.indsætPenge(beløb);
-                                if(automat.getBalance() >= 10)
-                                {
-                                    tidspunkt = "klokken 5";
-                                    beløb = automat.returpenge();
-                                    System.out.println("Du fik "+beløb+" retur");
-                                }
-                                else System.out.println("You did not put in enough money for a ticket");
                                 break;
                             case 2:
+                                automat.udskrivBillet();
+                                break;
+                            case 3:
+                                tidspunkt = "klokken 5";
+                                beløb = automat.returpenge();
+                                System.out.println("Du fik "+beløb+" retur");
                                 System.out.println("Afslutter transaktion.");
                                 købStatus = 0;
                                 valg = 0;   // nulstiller valg, så den ikke går ind i en forkert case
                                 ID++;
                                 Kunde cos = new Kunde(tidspunkt, ID, beløb);
                                 log.tilføjKunde(cos);
-                                automat.udskrivBillet();
                                 købStatus = 0;
                                 break;
                             default:
