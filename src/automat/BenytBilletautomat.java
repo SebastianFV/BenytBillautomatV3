@@ -41,14 +41,23 @@ public class BenytBilletautomat
                                 System.out.println("Intast oplysninger:");
                                 System.out.println("Beløb:");
                                 beløb = beløb + tastatur.nextInt();
+<<<<<<< HEAD
+=======
+                                automat.indsætPenge(beløb);
+>>>>>>> ddec7370e75a0feb5cb0a384a30afc34bf265d7d
                                 break;
                             case 2:
+                                automat.udskrivBillet();
+                                break;
+                            case 3:
+                                tidspunkt = "klokken 5";
+                                beløb = automat.returpenge();
+                                System.out.println("Du fik "+beløb+" retur");
                                 System.out.println("Afslutter transaktion.");
                                 valg = 0;   // nulstiller valg, så den ikke går ind i en forkert case
                                 ID++;
                                 Kunde cos = new Kunde(tidspunkt, ID, beløb);
                                 log.tilføjKunde(cos);
-                                automat.udskrivBillet();
                                 købStatus = 0;
                                 break;
                             default:
