@@ -4,6 +4,8 @@ public class BenytBilletautomat
     public static void main(String[] arg)
     {
         int ID = 0;
+        int beløb = 0;
+        String tidspunkt = "5";
         int købStatus = 0;
         int montørStatus = 0;
         Transaktionslog log = new Transaktionslog();
@@ -24,12 +26,9 @@ public class BenytBilletautomat
             switch(valg)
             {
                 case 1:
-                    // Arraylist skal fungere bedre. Virker som om den overskriver gamle lists når den tilføjer nye.
-                    ID++;
-                    Kunde cos = new Kunde();
-                    log.tilføjKunde(cos);
-                    log.setID(ID);
+                    beløb = 0;
                     købStatus = 1;
+                    // Arraylist skal fungere bedre. Virker som om den overskriver gamle lists når den tilføjer nye.
                     while(købStatus == 1)
                     {
                         automat.buyerMenu();
@@ -39,24 +38,29 @@ public class BenytBilletautomat
                         {
                             case 1:
                                 System.out.print("Skriv beløb: ");
-                                int beløb = tastatur.nextInt();
+                                beløb = beløb + tastatur.nextInt();
                                 automat.indsætPenge(beløb);
-                                log.setBeløb(beløb);
-                                break;
-                            case 2:
                                 if(automat.getBalance() >= 10)
                                 {
-                                    log.setTime("Klokken 5");
+                                    tidspunkt = "klokken 5";
                                     automat.udskrivBillet();
                                     beløb = automat.returpenge();
-                                    System.out.println("Du fik "+beløb+" retur retur");
+                                    System.out.println("Du fik "+beløb+" retur");
                                 }
                                 else System.out.println("You did not put in enough money for a ticket");
+                                break;
+                            case 2: 
+                                købStatus = 0;
                                 break;
                             case 3:
                                 System.out.println("Afslutter transaktion.");
                                 købStatus = 0;
                                 valg = 0;   // nulstiller valg, så den ikke går ind i en forkert case
+                                ID++;
+                                Kunde cos = new Kunde(tidspunkt, ID, beløb);
+                                log.tilføjKunde(cos);
+                                log.setID(ID);
+                                købStatus = 1;
                                 break;
                             default:
                                 System.out.println("Ugyldigt valg, prøv igen");
@@ -92,11 +96,11 @@ public class BenytBilletautomat
                                 break;
                             case 13:
                                 System.out.print("Skriv beløb: ");
-                                int beløb = tastatur.nextInt();
+                                beløb = beløb + tastatur.nextInt();
                                 automat.setBilletpris(beløb);
                                 break;
                             case 14:
-                                // Her skal jeg printe arraylist, gøres det rigtigt?
+                                // Her skal jeg printe array1list, gøres det rigtigt?
                                 log.printLog();
 //                              System.out.println("The time of the purchase for ID " + log.getID() + " was: " + log.getTime());
                                 break;
