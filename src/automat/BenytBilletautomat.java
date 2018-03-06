@@ -91,12 +91,12 @@ public class BenytBilletautomat
                 case 2:
                     System.out.print("Skriv kode: ");
                     counter = 0;
-                    String kode = tastatur.next();
                     int retries = 3;
-                    while (montørStatus != 1 && retries <= 0)
+                    while (montørStatus != 1 && retries > 0)
                     {
                         counter++;
-                        kode = tastatur.next();
+                        String kode = tastatur.next();
+                        automat.montørLogin(kode);
                         if (automat.erMontør())
                         {
                             montørStatus = 1;
@@ -108,7 +108,6 @@ public class BenytBilletautomat
                             System.out.println("You have " + retries + " tries left");
                         }
                     }
-                    automat.montørLogin(kode);
                     while(montørStatus == 1)
                     {
                         if (automat.erMontør()) 
@@ -143,8 +142,8 @@ public class BenytBilletautomat
                             case 15:
                                 // Virker ikke optimalt. Den printer info for ID 3 når man vælger 2, og error når man vælger 1.
                                 System.out.println("Skriv ID på kunden du ønsker at søge på:");
-                                valg = tastatur.nextInt();
-                                tastatur.nextLine(); // HVad er det her?
+                                valg = tastatur.nextInt() - 1;
+                                tastatur.nextLine(); 
                                 log.printLog(valg);
                                 break;
                             case 16:
