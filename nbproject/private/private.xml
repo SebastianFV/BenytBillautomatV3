@@ -6,6 +6,12 @@
         <group name="prog1">
             <file>file:/home/j/Drev/02313/02315%20TestOgVersionering/BenytBillautomatV3/src/automat/TjekBilletautomat.java</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/C:/Users/squid/Desktop/2.%20Semester/62514%20-%20Objektorienteret/Automat/BenytBillautomatV3/BenytBillautomatV3/src/automat/BenytBilletautomat.java</file>
+            <file>file:/C:/Users/squid/Desktop/2.%20Semester/62514%20-%20Objektorienteret/Automat/BenytBillautomatV3/BenytBillautomatV3/test/automat/BilletautomatTest.java</file>
+            <file>file:/C:/Users/squid/Desktop/2.%20Semester/62514%20-%20Objektorienteret/Automat/BenytBillautomatV3/BenytBillautomatV3/src/automat/Billetautomat.java</file>
+            <file>file:/C:/Users/squid/Desktop/2.%20Semester/62514%20-%20Objektorienteret/Automat/BenytBillautomatV3/BenytBillautomatV3/src/automat/Kunde.java</file>
+            <file>file:/C:/Users/squid/Desktop/2.%20Semester/62514%20-%20Objektorienteret/Automat/BenytBillautomatV3/BenytBillautomatV3/src/automat/Transaktionslog.java</file>
+        </group>
     </open-files>
 </project-private>

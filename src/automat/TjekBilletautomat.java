@@ -9,7 +9,7 @@ public class TjekBilletautomat
 		int antalFejl = 0;
 		int retur;
 		
-		retur = automat.getBilletpris();
+		retur = automat.getBBilletpris();
 		if (retur != 10) 
                 {
                     System.out.println("FEJL, getBilletpris() != 10");

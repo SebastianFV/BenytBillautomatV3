@@ -29,7 +29,7 @@ public class Billetautomat
     /**
      * Giver prisen for en billet. 
      */
-    public int getBilletpris() 
+    public int getBBilletpris() 
     {
         int resultat = børneBilletpris;
         return resultat;
@@ -49,6 +49,11 @@ public class Billetautomat
     public int getBalance() 
     {
         return balance;
+    }
+    
+    public void setBalance(int balance)
+    {
+        this.balance = balance;
     }
 
     /**
@@ -229,7 +234,7 @@ public class Billetautomat
     public void buyerMenu()
     {
         System.out.println("-----------------------------------------------");
-        System.out.println("En billet koster " + getBilletpris() + " kroner");
+        System.out.println("En billet koster " + getBBilletpris() + " kroner");
         System.out.println("Balancen er på " + getBalance() + " kroner");
         System.out.println();
         System.out.println("Tast 1 for at indbetale penge");
