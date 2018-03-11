@@ -10,7 +10,7 @@ public class Billetautomat
     private int børneBilletpris;    // Prisen for én billet.
     private int voksenBilletpris;
     private int balance; // Hvor mange penge kunden p.t. har puttet i automaten
-    private int antalBilletterSolgt; // Antal billetter automaten i alt har solgt
+    public int antalBilletterSolgt; // Antal billetter automaten i alt har solgt
     private boolean montørtilstand;
     public int antalVBillet = 0;
     public int antalBBillet = 0;
@@ -51,10 +51,6 @@ public class Billetautomat
         return balance;
     }
     
-    public void setBalance(int balance)
-    {
-        this.balance = balance;
-    }
 
     /**
      * Udskriv en billet.
@@ -197,11 +193,16 @@ public class Billetautomat
         }
     }
 
-    public void setBilletpris(int billetpris) 
+    public void setBørneBilletpris(int børneBilletpris) 
     {
-        this.børneBilletpris = billetpris;
+        this.børneBilletpris = børneBilletpris;
     }
 
+    public void setVoksenBilletpris(int voksenBilletpris) 
+    {
+        this.voksenBilletpris = voksenBilletpris;
+    }
+        
     public void nulstil() 
     {
         if (montørtilstand) 

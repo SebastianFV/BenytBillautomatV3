@@ -112,7 +112,7 @@ public class BilletautomatTest {
         System.out.println("setBilletpris");
         int billetpris = 20;
         Billetautomat instance = new Billetautomat();
-        instance.setBilletpris(billetpris);
+        instance.setBørneBilletpris(billetpris);
         assertEquals(20, instance.getBBilletpris());
     }
 

@@ -133,7 +133,7 @@ public class BenytBilletautomat
                                 System.out.print("Skriv beløb: ");
                                 beløb = tastatur.nextInt();
                                 beløb = beløb + tastatur.nextInt();
-                                automat.setBilletpris(beløb);
+                                automat.setBørneBilletpris(beløb);
                                 break;
                             case 14:
                                 System.out.println("---------------------------------------------------------------------------");
