@@ -10,10 +10,10 @@ public class Billetautomat
     private int børneBilletpris;    // Prisen for én billet.
     private int voksenBilletpris;
     private int balance; // Hvor mange penge kunden p.t. har puttet i automaten
-    public int antalBilletterSolgt; // Antal billetter automaten i alt har solgt
     private boolean montørtilstand;
     public int antalVBillet = 0;
     public int antalBBillet = 0;
+    public int antalBilletterSolgt; // Antal billetter automaten i alt har solgt
 
     /**
      * Opret en billetautomat der sælger billetter til 10 kr.

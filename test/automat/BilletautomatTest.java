@@ -83,7 +83,6 @@ public class BilletautomatTest {
      */
     @Test
     public void testMontørLogin() {
-        System.out.println("mont\u00f8rLogin");
         String adgangskode = "1234";
         Billetautomat instance = new Billetautomat();
         instance.montørLogin(adgangskode);

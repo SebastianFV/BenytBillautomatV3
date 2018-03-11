@@ -15,10 +15,6 @@ public class Kunde
     private int antalVoksenBilletter;
     private int antalBørneBilletter;
 
-//    public Kunde()
-//    {
-//        
-//    }
     
     public Kunde(String tidspunkt, int ID, int beløb, int retur, int antalBørneBilletter, int antalVoksenBilletter) 
     {

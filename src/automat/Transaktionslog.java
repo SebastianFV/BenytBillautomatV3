@@ -19,59 +19,7 @@ public class Transaktionslog
     {
         kunder.add(cos);
     }
-//    
-//    public  void setTime(String time)
-//    {
-//        kunder.forEach((cos) -> {
-//            cos.setTidspunkt(time);
-//        });
-//    }
-//    public String getTime()
-//    {
-//        for(Kunde cos : kunder)
-//        {
-//            return cos.getTidspunkt();
-//        }
-//        return "No costumers exist";
-//    }
-//    public  void setID(int ID)
-//    {
-//        kunder.forEach((cos) -> {
-//            cos.setID(ID);
-//        });
-//    }
-//    public int getID()
-//    {
-//        for(Kunde cos : kunder)
-//        {
-//            return cos.getID();
-//        }
-//        return 0;
-//    }
-//    public  void setBeløb(int beløb)
-//    {
-//        kunder.forEach((cos) -> {
-//            cos.setBeløb(beløb);
-//        });
-//    }
-//    
-//    public int getBeløb()
-//    {
-//        for(Kunde cos : kunder)
-//        {
-//            return cos.getBeløb();
-//        }
-//        return 0;
-//    }
-//    
-//    public int getRetur()
-//    {
-//        for(Kunde cos : kunder)
-//        {
-//            return cos.getRetur();
-//        }
-//        return 0;
-//    }
+
     
     public void printLog()
     {
