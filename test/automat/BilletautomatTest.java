@@ -45,6 +45,7 @@ public class BilletautomatTest {
     public void testGetBilletpris() {
         System.out.println("getBilletpris");
         Billetautomat instance = new Billetautomat();
+        instance.setBørneBilletpris(0);
         int expResult = 10;
         int result = instance.getBBilletpris();
         assertEquals(expResult, result);
