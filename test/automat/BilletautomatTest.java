@@ -68,21 +68,19 @@ public class BilletautomatTest {
         assertEquals(instance.erMontør(), true);
     }
 
-    @Test
-    public void testGetTotal() {
-        System.out.println("getTotal");
-        Billetautomat instance = new Billetautomat();
-        instance.erMontør();
-        instance.indsætPenge(40);
-        instance.udskrivBørneBillet();
-        instance.udskrivBørneBillet();
-        instance.udskrivVoksenBillet();
-        instance.setAntalBørneBilletterSolgt(2);
-        instance.setAntalVoksenBilletterSolgt(1);
-        int expResult = 40;
-        int result = instance.getTotal();
-        assertEquals(expResult, result);
-    }
+//    @Test
+//    public void testGetTotal() {
+//        System.out.println("getTotal");
+//        Billetautomat instance = new Billetautomat();
+//        instance.indsætPenge(40);
+//        instance.udskrivBørneBillet();
+//        instance.udskrivBørneBillet();
+//        instance.udskrivVoksenBillet();
+////        instance.erMontør();
+//        int expResult = 40;
+//        int result = instance.getTotal();
+//        assertEquals(expResult, result);
+//    }
 
 
 

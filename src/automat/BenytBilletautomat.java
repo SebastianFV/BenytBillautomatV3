@@ -80,6 +80,8 @@ public class BenytBilletautomat
                                 ID++;
                                 Kunde cos = new Kunde(tidspunkt, ID, beløb, retur, automat.antalBBillet, automat.antalVBillet);
                                 log.tilføjKunde(cos);
+                                automat.setAntalBørneBilletterSolgt(0);
+                                automat.setAntalVoksenBilletterSolgt(0);
                                 købStatus = 0;
                                 break;
                             default:
