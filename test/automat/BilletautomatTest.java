@@ -5,10 +5,10 @@
  */
 package automat;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+//import org.junit.After;
+//import org.junit.AfterClass;
+//import org.junit.Before;
+//import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -17,30 +17,8 @@ import static org.junit.Assert.*;
  * @author Squid
  */
 public class BilletautomatTest {
-    
-    public BilletautomatTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() 
-    {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
-    /**
-     * Test of getBilletpris method, of class Billetautomat.
-     */
+    
     @Test
     public void testGetBilletpris() {
         System.out.println("getBilletpris");
