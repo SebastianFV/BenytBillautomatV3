@@ -29,8 +29,8 @@ public class Transaktionslog
             System.out.println("Tidspunkt for køb: " + kunder.get(i).getTidspunkt());
             System.out.println("Penge lagt i maskinen: " + kunder.get(i).getBeløb());
             System.out.println("Returpenge var: " + kunder.get(i).getRetur());
-            System.out.println("Antal børnebilletter købt var: " + kunder.get(i).getBBillet());
-            System.out.println("Antal voksenbilletter købt var: " + kunder.get(i).getVBillet());
+            System.out.println("Antal børnebilletter købt var: " + kunder.get(i).getBørneBillet());
+            System.out.println("Antal voksenbilletter købt var: " + kunder.get(i).getVoksenBillet());
             System.out.println("---------------------------------------------------------------------------");
             System.out.println("");
         }
@@ -42,9 +42,15 @@ public class Transaktionslog
         System.out.println("Tidspunkt for køb: " + kunder.get(ID).getTidspunkt());
         System.out.println("Penge lagt i maskinen: " + kunder.get(ID).getBeløb());
         System.out.println("Returpenge var: " + kunder.get(ID).getRetur());
-        System.out.println("Antal børnebilletter købt var: " + kunder.get(ID).getBBillet());
-        System.out.println("Antal voksenbilletter købt var: " + kunder.get(ID).getVBillet());
+        System.out.println("Antal børnebilletter købt var: " + kunder.get(ID).getBørneBillet());
+        System.out.println("Antal voksenbilletter købt var: " + kunder.get(ID).getVoksenBillet());
         System.out.println("---------------------------------------------------------------------------");
         System.out.println("");
     }
+    public void printBørneLog()
+    {
+        
+    }
+    
+    
 }

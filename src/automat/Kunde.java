@@ -40,6 +40,16 @@ public class Kunde
     {
         this.beløb = beløb;
     }
+    
+    public void setBBillet(int antalBørneBilletter)
+    {
+        this.antalBørneBilletter = antalBørneBilletter;
+    }
+    
+    public void setVBillet(int antalVoksenBilletter)
+    {
+        this.antalVoksenBilletter = antalVoksenBilletter;
+    }
 
     public String getTidspunkt() 
     {
@@ -61,12 +71,12 @@ public class Kunde
         return retur;
     }
     
-    public int getBBillet()
+    public int getBørneBillet()
     {
         return antalBørneBilletter;
     }
     
-    public int getVBillet()
+    public int getVoksenBillet()
     {
         return antalVoksenBilletter;
     }

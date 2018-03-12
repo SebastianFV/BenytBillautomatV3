@@ -211,7 +211,10 @@ public class Billetautomat
     {
         if (montørtilstand) 
         {
+            balance = 0;
             antalBilletterSolgt = 0;
+            antalVBillet = 0;
+            antalBBillet = 0;
         } 
         else 
         {
@@ -239,7 +242,6 @@ public class Billetautomat
     public void buyerMenu()
     {
         System.out.println("-----------------------------------------------");
-        System.out.println("En billet koster " + getBBilletpris() + " kroner");
         System.out.println("Balancen er på " + getBalance() + " kroner");
         System.out.println();
         System.out.println("Tast 1 for at indbetale penge");
@@ -250,7 +252,7 @@ public class Billetautomat
     public void billetmenu()
 {
         System.out.println("Vælg billettype:");
-        System.out.println("1. Børnebillet 10kr");
-        System.out.println("2. Voksenbillet 20kr");
+        System.out.println("1. Børnebillet " + getBBilletpris() + "kr");
+        System.out.println("2. Voksenbillet "+ getVBilletpris() + "kr");
     }
 }

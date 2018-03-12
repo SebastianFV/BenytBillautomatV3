@@ -49,15 +49,14 @@ public class BenytBilletautomat
                                 int input = tastatur.nextInt();
                                 while(input < 0)            //Betaling skal være positiv
                                 {
+                                    System.out.println("Dette er ikke et brugbart input");
                                     input = tastatur.nextInt();
                                 }
                                 automat.indsætPenge(input);
                                 beløb = beløb + input;
                                 break;
                             case 2:
-                                System.out.println("Vælg billettype:");
-                                System.out.println("1. Børnebillet " + automat.getBBilletpris() + "kr");
-                                System.out.println("2. Voksenbillet "+ automat.getVBilletpris() + "kr");
+                                automat.billetmenu();
                                 valg = tastatur.nextInt();
                                 tastatur.nextLine(); // HVad er det her?
                                 if(valg == 1)

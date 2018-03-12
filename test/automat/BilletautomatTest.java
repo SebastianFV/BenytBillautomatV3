@@ -65,7 +65,7 @@ public class BilletautomatTest {
         String adgangskode = "1234";
         Billetautomat instance = new Billetautomat();
         instance.montørLogin(adgangskode);
-        assertEquals(instance.erMontør(), true);
+        assertTrue(instance.erMontør());
     }
 
 //    @Test
