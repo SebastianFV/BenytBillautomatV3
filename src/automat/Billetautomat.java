@@ -31,8 +31,12 @@ public class Billetautomat
      */
     public int getBBilletpris() 
     {
-        int resultat = børneBilletpris;
-        return resultat;
+        return børneBilletpris;
+    }
+    
+    public int getVBilletpris()
+    {
+        return voksenBilletpris;
     }
 
     /**

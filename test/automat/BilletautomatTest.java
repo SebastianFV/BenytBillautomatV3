@@ -23,7 +23,7 @@ public class BilletautomatTest {
     public void testGetBilletpris() {
         System.out.println("getBilletpris");
         Billetautomat instance = new Billetautomat();
-        instance.setBørneBilletpris(0);
+        instance.setBørneBilletpris(10);
         int expResult = 10;
         int result = instance.getBBilletpris();
         assertEquals(expResult, result);
@@ -73,9 +73,13 @@ public class BilletautomatTest {
         System.out.println("getTotal");
         Billetautomat instance = new Billetautomat();
         instance.erMontør();
+        instance.indsætPenge(40);
+        instance.udskrivBørneBillet();
+        instance.udskrivBørneBillet();
+        instance.udskrivVoksenBillet();
         instance.setAntalBørneBilletterSolgt(2);
-        instance.setAntalVoksenBilletterSolgt(3);
-        int expResult = 2*10+3*20;
+        instance.setAntalVoksenBilletterSolgt(1);
+        int expResult = 40;
         int result = instance.getTotal();
         assertEquals(expResult, result);
     }

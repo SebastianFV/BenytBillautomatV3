@@ -56,8 +56,8 @@ public class BenytBilletautomat
                                 break;
                             case 2:
                                 System.out.println("Vælg billettype:");
-                                System.out.println("1. Børnebillet 10kr");
-                                System.out.println("2. Voksenbillet 20kr");
+                                System.out.println("1. Børnebillet " + automat.getBBilletpris() + "kr");
+                                System.out.println("2. Voksenbillet "+ automat.getVBilletpris() + "kr");
                                 valg = tastatur.nextInt();
                                 tastatur.nextLine(); // HVad er det her?
                                 if(valg == 1)
