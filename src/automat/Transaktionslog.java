@@ -47,9 +47,19 @@ public class Transaktionslog
         System.out.println("---------------------------------------------------------------------------");
         System.out.println("");
     }
-    public void printBørneLog()
+    public void printBørneLog(int børneBilletter)
     {
-        
+        for (int i = 0; i < kunder.get(i).getBørneBillet(); i++) 
+        {
+            System.out.println("Kunde ID: " + kunder.get(i).getID());      // Printer ID, på trods af at det er det man søger efter. Skal måske slettes
+            System.out.println("Tidspunkt for køb: " + kunder.get(i).getTidspunkt());
+            System.out.println("Penge lagt i maskinen: " + kunder.get(i).getBeløb());
+            System.out.println("Returpenge var: " + kunder.get(i).getRetur());
+            System.out.println("Antal børnebilletter købt var: " + kunder.get(i).getBørneBillet());
+            System.out.println("Antal voksenbilletter købt var: " + kunder.get(i).getVoksenBillet());
+            System.out.println("---------------------------------------------------------------------------");
+            System.out.println("");
+        }
     }
     
     

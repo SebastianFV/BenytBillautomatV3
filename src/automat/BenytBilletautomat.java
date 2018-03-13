@@ -117,8 +117,7 @@ public class BenytBilletautomat
                             System.out.println("Tast 12 for at nulstille (montør)");
                             System.out.println("Tast 13 for at sætte billetpris (montør)");
                             System.out.println("Tast 14 for at printe transaktionslog (montør)");
-                            System.out.println("Tast 15 for at søge efter information om en specifik kunde");
-                            System.out.println("Tast 16 for at logge ud af montørtilstand");
+                            System.out.println("Tast 15 for at logge ud af montørtilstand");
                             valg = tastatur.nextInt();
                             tastatur.nextLine();
                             switch(valg)
@@ -137,17 +136,32 @@ public class BenytBilletautomat
                                 automat.setBørneBilletpris(beløb);
                                 break;
                             case 14:
+                                System.out.println("Ønsker du at:");
+                                System.out.println("1. Print total log");
+                                System.out.println("2. Print info ud fra ID");
+                                System.out.println("3. Print info ud fra børnebilletter");
                                 System.out.println("---------------------------------------------------------------------------");
-                                log.printLog();
+                                valg = tastatur.nextInt();
+                                tastatur.nextLine();
+                                switch(valg)
+                                {
+                                    case 1:
+                                        log.printLog();
+                                    break;
+                                    case 2:
+                                        System.out.println("Skriv ID på kunden du ønsker at søge på:");
+                                        valg = tastatur.nextInt() - 1;
+                                        tastatur.nextLine(); 
+                                        log.printLog(valg);
+                                    break;
+                                    case 3:
+//                                        log.printBørneLog(); // virker ikke
+                                    break;
+                                    default:
+                                        System.out.println("That was not a valid input");
+                                }
                                 break;
                             case 15:
-                                // Virker ikke optimalt. Den printer info for ID 3 når man vælger 2, og error når man vælger 1.
-                                System.out.println("Skriv ID på kunden du ønsker at søge på:");
-                                valg = tastatur.nextInt() - 1;
-                                tastatur.nextLine(); 
-                                log.printLog(valg);
-                                break;
-                            case 16:
                                 automat.montørLogin("");
                                 montørStatus = 0;
                                 valg = 0; // nulstiller valg, så den ikke går ind i en forkert case
