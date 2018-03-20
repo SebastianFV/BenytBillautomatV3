@@ -80,7 +80,4 @@ public class Kunde
     {
         return antalVoksenBilletter;
     }
-    
-
-    
 }

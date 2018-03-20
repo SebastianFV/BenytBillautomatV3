@@ -15,7 +15,7 @@ public class BenytBilletautomat
         JFrame vindue = new JFrame("Billetautomat");
         vindue.add(gui);
         vindue.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        vindue.setSize(1000, 1000);
+        vindue.setSize(1000, 700);
         vindue.setVisible(true);
         
         

@@ -34,6 +34,22 @@ public class Billetautomat
         this.tidspunkt = date.toString();
         return tidspunkt;
     }
+
+    public int getAntalVBillet() {
+        return antalVBillet;
+    }
+
+    public void setAntalVBillet(int antalVBillet) {
+        this.antalVBillet = antalVBillet;
+    }
+
+    public int getAntalBBillet() {
+        return antalBBillet;
+    }
+
+    public void setAntalBBillet(int antalBBillet) {
+        this.antalBBillet = antalBBillet;
+    }
     /**
      * Giver prisen for en billet. 
      */

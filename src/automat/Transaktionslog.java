@@ -9,15 +9,22 @@ import java.util.ArrayList;
 public class Transaktionslog 
 {
     public ArrayList<Kunde> kunder;
+    public ArrayList<Kurv> kurv;
     
     public Transaktionslog()
     {
         kunder = new ArrayList<Kunde>();
+        kurv = new ArrayList<Kurv>();
     }
     
     public void tilføjKunde(Kunde cos)
     {
         kunder.add(cos);
+    }
+    
+    public void tilføjTilKurv(Kurv basket)
+    {
+        kurv.add(basket);
     }
 
     
