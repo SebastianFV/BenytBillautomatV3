@@ -1,6 +1,7 @@
 package automat;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Model af en simpel billetautomat til enkeltbilletter med én fast pris.
@@ -14,6 +15,7 @@ public class Billetautomat
     public int antalVBillet = 0;
     public int antalBBillet = 0;
     public int antalBilletterSolgt; // Antal billetter automaten i alt har solgt
+    public String tidspunkt;
 
     /**
      * Opret en billetautomat der sælger billetter til 10 kr.
@@ -25,7 +27,13 @@ public class Billetautomat
         balance = 0;
         antalBilletterSolgt = 0;
     }
-
+    
+    public String getTidspunkt()
+    {
+        Date date = new Date();
+        this.tidspunkt = date.toString();
+        return tidspunkt;
+    }
     /**
      * Giver prisen for en billet. 
      */

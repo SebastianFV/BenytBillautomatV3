@@ -1,10 +1,24 @@
 package automat;
 import java.util.Date;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class BenytBilletautomat
 {
     public static void main(String[] arg)
     {
+        Transaktionslog log = new Transaktionslog();
+        Billetautomat automat = new Billetautomat();
+        GUI gui = new GUI();
+        gui.automat = automat;      // Vi sætter automat objektet inde i gui til at være det objekt vi har oprettet i main.'
+        gui.updateAutomat();          // This function is repeated.
+        JFrame vindue = new JFrame("Billetautomat");
+        vindue.add(gui);
+        vindue.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        vindue.setSize(1000, 1000);
+        vindue.setVisible(true);
+        
+        
         Date dato = new Date();
         String tidspunkt = dato.toString();
         int beløb = 0;
@@ -16,15 +30,14 @@ public class BenytBilletautomat
         int antalBBillet = 0;
         int counter = 0;
         
-        Transaktionslog log = new Transaktionslog();
-        Billetautomat automat = new Billetautomat();
-        java.util.Scanner tastatur = new java.util.Scanner(System.in);  // forbered
+        java.util.Scanner tastatur = new java.util.Scanner(System.in);
 
         System.out.println("BenytBilletautomat version 3");
         System.out.println();
 
         while (true) 
         {
+            gui.updateAutomat(); 
             System.out.println("Tast 1 for at købe in billet");
             System.out.println();
             System.out.println("Tast 2 for at logge ind som montør");
@@ -39,6 +52,7 @@ public class BenytBilletautomat
                     // Arraylist skal fungere bedre. Virker som om den overskriver gamle lists når den tilføjer nye.
                     while(købStatus == 1)
                     {
+                        gui.updateAutomat(); 
                         automat.buyerMenu();
                         valg = tastatur.nextInt();
                         tastatur.nextLine(); // HVad er det her? 
