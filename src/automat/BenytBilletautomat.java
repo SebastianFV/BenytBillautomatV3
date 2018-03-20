@@ -11,7 +11,7 @@ public class BenytBilletautomat
         Billetautomat automat = new Billetautomat();
         GUI gui = new GUI();
         gui.automat = automat;      // Vi sætter automat objektet inde i gui til at være det objekt vi har oprettet i main.'
-        gui.updateAutomat();          // This function is repeated.
+        gui.reset();         
         JFrame vindue = new JFrame("Billetautomat");
         vindue.add(gui);
         vindue.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -37,7 +37,7 @@ public class BenytBilletautomat
 
         while (true) 
         {
-            gui.updateAutomat(); 
+            gui.reset(); 
             System.out.println("Tast 1 for at købe in billet");
             System.out.println();
             System.out.println("Tast 2 for at logge ind som montør");

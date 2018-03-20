@@ -9,12 +9,12 @@ import java.util.ArrayList;
 public class Transaktionslog 
 {
     public ArrayList<Kunde> kunder;
-    public ArrayList<Kurv> kurv;
+    public ArrayList<Billet> billet;
     
     public Transaktionslog()
     {
         kunder = new ArrayList<Kunde>();
-        kurv = new ArrayList<Kurv>();
+        billet = new ArrayList<Billet>();
     }
     
     public void tilføjKunde(Kunde cos)
@@ -22,11 +22,19 @@ public class Transaktionslog
         kunder.add(cos);
     }
     
-    public void tilføjTilKurv(Kurv basket)
+    public void tilføjTilKurv(int antalBilletter, String billetType, int pris)
     {
-        kurv.add(basket);
+        billet.add(new Billet(antalBilletter, billetType, pris));
     }
-
+    
+    public void printKurv()
+    {
+        for (int i = 0; i < billet.size(); i++) 
+        {
+            System.out.println("");
+            
+        }
+    }
     
     public void printLog()
     {

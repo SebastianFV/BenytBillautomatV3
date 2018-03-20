@@ -9,13 +9,13 @@ package automat;
  *
  * @author Squid
  */
-public class Kurv 
+public class Billet 
 {
     int antalBilletter;
     String billetType;
     int pris;
     
-    public Kurv(int antalBilletter, String billetType, int pris)
+    public Billet(int antalBilletter, String billetType, int pris)
     {
        this.antalBilletter = antalBilletter;
        this.billetType = billetType;

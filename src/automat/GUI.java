@@ -13,8 +13,8 @@ import javax.swing.DefaultListModel;
  */
 public class GUI extends javax.swing.JPanel 
 {
-    Transaktionslog log = new Transaktionslog();
     Billetautomat automat;      // Sådan man kan kalde funktioner fra en anden klasse uden at lave et nyt objekt.
+    Transaktionslog log;
     BenytBilletautomat benyt;
     
     public boolean vButtonChecked = false;
@@ -26,7 +26,6 @@ public class GUI extends javax.swing.JPanel
     public GUI() 
     {
         initComponents();
-        Kurv kurv = new Kurv(1, "s", 1);
     }
     
     void updateAutomat() 
@@ -36,14 +35,24 @@ public class GUI extends javax.swing.JPanel
         Balance.setText("Balance: " + balance);
         tilføjTilKurv();
     }
-    
+    // Meningen med denne funktion er at den skal printe en liste med alle de billetter kunden har valgt. Lige nu printer den bare halløj 5 gange hvor dette skal stå.
     void tilføjTilKurv()
     {
         DefaultListModel listModel = new DefaultListModel();
-        for (int i = 0; i < 10; i++) {
-            listModel.addElement("Halløj");
+        for (int i = 0; i < log.billet.size(); i++) {
+            listModel.addElement(automat.getAntalBBillet());
         }
         Indkøbskurv.setModel(listModel);
+    }
+    
+    void reset()
+    {
+        automat.setAntalBBillet(0);
+        automat.setAntalVBillet(0);
+        DefaultListModel listModel = new DefaultListModel();
+        Indkøbskurv.setModel(listModel);
+        dato.setText("Dato: " + automat.getTidspunkt());
+        int balance = automat.getBalance();
     }
 
     /**
@@ -69,6 +78,7 @@ public class GUI extends javax.swing.JPanel
         børnebillet = new javax.swing.JCheckBox();
         antalVBilletter = new javax.swing.JTextField();
         antalBBilletter = new javax.swing.JTextField();
+        køb = new javax.swing.JButton();
 
         setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -120,6 +130,13 @@ public class GUI extends javax.swing.JPanel
             }
         });
 
+        køb.setText("Køb");
+        køb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                købActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -128,60 +145,70 @@ public class GUI extends javax.swing.JPanel
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(titel))
+                        .addComponent(dato)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(køb))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(dato))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(IndbetalingsVindue, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Balance))
-                                .addGap(164, 164, 164)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap()
+                                .addComponent(titel))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(86, 86, 86)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(IndbetalLabel)
-                                    .addComponent(voksenbillet)
-                                    .addComponent(børnebillet))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(antalBBilletter, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                                    .addComponent(antalVBilletter))))))
-                .addContainerGap(127, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(IndbetalingsVindue, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Balance))
+                                        .addGap(164, 164, 164)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(IndbetalLabel)
+                                            .addComponent(voksenbillet)
+                                            .addComponent(børnebillet))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(antalBBilletter, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                                            .addComponent(antalVBilletter))))))
+                        .addGap(0, 115, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(titel)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(voksenbillet)
-                            .addComponent(antalVBilletter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(børnebillet)
-                            .addComponent(antalBBilletter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(74, 74, 74)
-                        .addComponent(IndbetalLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IndbetalingsVindue, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Balance))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(køb))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
-                .addComponent(dato)
+                        .addComponent(titel)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(voksenbillet)
+                                    .addComponent(antalVBilletter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(børnebillet)
+                                    .addComponent(antalBBilletter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(74, 74, 74)
+                                .addComponent(IndbetalLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(IndbetalingsVindue, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Balance))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                        .addComponent(dato)))
                 .addContainerGap())
         );
 
@@ -217,12 +244,13 @@ public class GUI extends javax.swing.JPanel
     }//GEN-LAST:event_voksenbilletActionPerformed
 
     private void antalVBilletterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_antalVBilletterActionPerformed
-                if(vButtonChecked == true)
+        if(vButtonChecked == true)
         {
             try {
             int antalBilletterKøbt = Integer.parseInt(antalVBilletter.getText());
             automat.setAntalVBillet(antalBilletterKøbt);
             System.out.println("Du har købt " + antalBilletterKøbt + " voksenbilletter");
+            log.tilføjTilKurv(antalBilletterKøbt, "Voksenbillet", automat.getVBilletpris());
             } catch (Exception e) {
                 String str = javax.swing.JOptionPane.showInputDialog("Kun tal tilladt!");
             }
@@ -245,6 +273,7 @@ public class GUI extends javax.swing.JPanel
             int antalBilletterKøbt = Integer.parseInt(antalBBilletter.getText());
             automat.setAntalBBillet(antalBilletterKøbt);
             System.out.println("Du har købt " + antalBilletterKøbt + " børnebilletter");
+            log.tilføjTilKurv(antalBilletterKøbt, "Børnebillet", automat.getBBilletpris());
             } catch (Exception e) {
                 String str = javax.swing.JOptionPane.showInputDialog("Kun tal tilladt!");
             }
@@ -252,6 +281,10 @@ public class GUI extends javax.swing.JPanel
         }
         else System.err.println("Checkmark was not pressed");
     }//GEN-LAST:event_antalBBilletterActionPerformed
+
+    private void købActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_købActionPerformed
+        reset();
+    }//GEN-LAST:event_købActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -267,6 +300,7 @@ public class GUI extends javax.swing.JPanel
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton køb;
     private javax.swing.JLabel titel;
     private javax.swing.JCheckBox voksenbillet;
     // End of variables declaration//GEN-END:variables
