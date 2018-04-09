@@ -33,7 +33,7 @@ public class GUI extends javax.swing.JPanel
         dato.setText("Dato: " + automat.getTidspunkt());
         int balance = automat.getBalance();
         Balance.setText("Balance: " + balance);
-        tilføjTilKurv();
+//        tilføjTilKurv();
     }
     // Meningen med denne funktion er at den skal printe en liste med alle de billetter kunden har valgt. Lige nu printer den bare halløj 5 gange hvor dette skal stå.
     void tilføjTilKurv()
@@ -250,7 +250,7 @@ public class GUI extends javax.swing.JPanel
             int antalBilletterKøbt = Integer.parseInt(antalVBilletter.getText());
             automat.setAntalVBillet(antalBilletterKøbt);
             System.out.println("Du har købt " + antalBilletterKøbt + " voksenbilletter");
-            log.tilføjTilKurv(antalBilletterKøbt, "Voksenbillet", automat.getVBilletpris());
+//            log.tilføjTilKurv(antalBilletterKøbt, "Voksenbillet", automat.getVBilletpris());
             } catch (Exception e) {
                 String str = javax.swing.JOptionPane.showInputDialog("Kun tal tilladt!");
             }
@@ -273,7 +273,7 @@ public class GUI extends javax.swing.JPanel
             int antalBilletterKøbt = Integer.parseInt(antalBBilletter.getText());
             automat.setAntalBBillet(antalBilletterKøbt);
             System.out.println("Du har købt " + antalBilletterKøbt + " børnebilletter");
-            log.tilføjTilKurv(antalBilletterKøbt, "Børnebillet", automat.getBBilletpris());
+//            log.tilføjTilKurv(antalBilletterKøbt, "Børnebillet", automat.getBBilletpris());
             } catch (Exception e) {
                 String str = javax.swing.JOptionPane.showInputDialog("Kun tal tilladt!");
             }
